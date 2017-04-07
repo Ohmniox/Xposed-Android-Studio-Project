@@ -1,0 +1,204 @@
+Table of Contents
+Explain what pagination in bootstrap is and how they are classified?	2
+What is the use of Jumbotron in Bootstrap?	2
+What are offset columns in Bootstrap?	2
+What is column ordering in Bootstrap?	2
+What is the difference between Bootstrap and Foundation?	2
+Explain what are the steps for creating basic or vertical forms?	3
+Explain what is Modal plugin used for in Bootstrap?	3
+Explain what are Bootstrap collapsing elements?	3
+Explain what media object in Bootstrap is and what are their types?	3
+Explain what is Bootstrap well?	4
+Explain what is the use of Bootstrap Carousel plugin?	4
+What is Contextual classes of table in Bootstrap?	4
+How do you make images responsive?	4
+Explain the typography and links in Bootstrap?	4
+Explain types of lists supported by Bootstrap?	4
+Explain how you can create Nav elements in Bootstrap?	5
+Which classes can be applied to button group instead of resizing each button?	5
+How will you create a pills navigation menu?	5
+What is bootstrap breadcrumb?	5
+What are bootstrap badges?	5
+How to create thumbnails using Bootstrap?	6
+What are bootstrap media objects?	6
+What are bootstrap panels?	6
+Can you put a table within bootstrap panel?	6
+Can you put a listgroup within bootstrap panel?	6
+What is Scrollspy plugin?	6
+What is affix plugin?	7
+Why use Bootstrap?	7
+What are Offset columns?	7
+What is Normalize in Bootstrap?	7
+What are glyphicons?	8
+What is Bootstrap caraousel?	8
+What are input groups?	8
+How will you customize links of pagination?	8
+What are bootstrap alerts?	8
+What are bootstrap panels?	8
+What is bootstrap well?	9
+What contextual classes are available to style the panels?	9
+
+
+
+
+
+Bootstarp Interview Questions
+Explain what pagination in bootstrap is and how they are classified?
+
+Pagination is the handling of an unordered list by bootstrap. To handle pagination bootstrap provides following classes
+.pagination: To get pagination on your page you have to add this class
+.disabled, .active: Customize links by .disabled for unclickable links and .active to indicate the current page
+.pagination-Ig, .pagination-sm: Use these classes to get different size item
+What is the use of Jumbotron in Bootstrap?
+
+In bootstrap, Jumbotron is generally used for content that you want to highlight like some slogan or marketing headline etc. in other words it is used to enlarge the size of the headings and to add a margin for landing page content
+What are offset columns in Bootstrap?
+
+For more specialized layouts offsets are a useful feature. For more spacing they can be used by pushing column over.
+For example, .col-xs=* classes do not support offset but they are easily replicated using an empty cell
+What is column ordering in Bootstrap?
+
+Column ordering is one of the feature available in bootstrap and you can easily write columns in an order and show them in another one. With .col-md-push-* and .col-md-pull-* the order of the column can be easily changed.
+What is the difference between Bootstrap and Foundation?
+
+Grid Structure
+Bootstrap and Foundation each offer a mobile-first 12-column grid consisting of rows and columns. Columns are nested inside a row. They scale up to 12 for each row. Rows can be nested within the columns as well.
+
+Both frameworks come with many predefined classes you can use to set the size of your columns. As mentioned above, Bootstrap includes four media query breakpoints and Foundation has five. For each grid, there’s a different class prefix that can be used to set the size of the columns
+Explain what are the steps for creating basic or vertical forms?
+
+The steps for creating basic or vertical forms are
+•	Add a role form to the parent <form> element
+•	Wrap labels and controls in a <div> with class .form-group. To achieve optimum spacing this is needed
+•	Add a class of .form-control to all texturl <input> , <textarea> , and <select> elements
+
+Explain what is Modal plugin used for in Bootstrap?
+
+A modal is a child window that is layered over its parent window. Using a custom Jquery Plugin, Bootstrap Modal are created. To enrich user experience and to add functionality to users, modal windows are created with the help of Modal plugin.
+Explain what are Bootstrap collapsing elements?
+
+Bootstrap collapsing elements enables you to collapse any particular element without writing any JavaScript code or the accordion markup. In Bootstrap to apply collapsing elements you have to add data-toggle= “collapse” to the controller element along with a
+data-target or href to automatically assign control of a collapsible element. Likewise, you can use .collapse (options), .collapse (‘show’) or .collapse (‘hide’)
+Explain what media object in Bootstrap is and what are their types?
+
+Media objects in Bootstrap enables to put media object like image, video or audio to the left or right of the content blocks. Media element can be created using the class .media and the source is specified in using the class .media-object. Media-objects are of two types,They are of two types
+•	.media
+•	.media-list
+
+Explain what is Bootstrap well?
+
+Bootstrap well is a container <div> that makes the content to appear sunken or an inset effect on the page. In order to create a well, wrap the content that you would like to appear in the well with a <div> containing the class of .well.
+Explain what is the use of Bootstrap Carousel plugin?
+
+The Carousel plugin is used to add a slider to your site. It is useful in condition where you want to display huge amount of contents within a small space on the web pages.
+What is Contextual classes of table in Bootstrap?
+
+The Contextual classes allow you to change the background color of your table rows or individual cells.
+How do you make images responsive?
+
+Bootstrap 3 allows to make the images responsive by adding a class .img-responsive to the <img> tag. This class applies max-width: 100%; and height: auto; to the image so that it scales nicely to the parent element.
+Explain the typography and links in Bootstrap?
+
+Bootstrap sets a basic global display (background), typography, and link styles −
+•	Basic Global display − Sets background-color: #fff; on the <body> element.
+•	Typography − Uses the @font-family-base, @font-size-base, and @line-height-base attributes as the typographic base
+•	Link styles − Sets the global link color via attribute @link-color and apply link underlines only on :hover.
+Explain types of lists supported by Bootstrap?
+
+Bootstrap supports ordered lists, unordered lists, and definition lists.
+•	Ordered lists − An ordered list is a list that falls in some sort of sequential order and is prefaced by numbers.
+•	Unordered lists − An unordered list is a list that doesn't have any particular order and is traditionally styled with bullets. If you do not want the bullets to appear then you can remove the styling by using the class .list-unstyled. You can also place all list items on a single line using the class .list-inline.
+•	Definition lists − In this type of list, each list item can consist of both the <dt> and the <dd> elements. <dt> stands for definition term, and like a dictionary, this is the term (or phrase) that is being defined. Subsequently, the <dd> is the definition of the <dt>. You can make terms and descriptions in <dl> line up side-by-side using class dl-horizontal.
+Explain how you can create Nav elements in Bootstrap?
+
+Bootstrap offers various options for styling navigation elements all of them use the same markup and base class .nav. To create Tabular Navigation or Tabs Start with a basic unordered list with the base class of .nav Then add class .nav-tabs
+Which classes can be applied to button group instead of resizing each button?
+
+.btn-group-lg, .btn-group-sm, .btn-group-xs classes can be applied to button group instead of resizing each button.
+How will you create a pills navigation menu?
+
+To create a pills navigation menu −
+Start with a basic unordered list with the base class of .nav.
+Add class .nav-pills.
+What is bootstrap breadcrumb?
+
+Breadcrumbs are a great way to show hierarchy-based information for a site. In the case of blogs, breadcrumbs can show the dates of publishing, categories, or tags. They indicate the current page's location within a navigational hierarchy. A breadcrumb in Bootstrap is simply an unordered list with a class of breadcrumb. The separator is automatically added by CSS (bootstrap.min.css).
+What are bootstrap badges?
+
+Badges are similar to labels; the primary difference is that the corners are more rounded. Badges are mainly used to highlight new or unread items. To use badges just add <span class = "badge"> to links, Bootstrap navs, and more.
+
+How to create thumbnails using Bootstrap?
+
+To create thumbnails using Bootstrap −
+Add an <a> tag with the class of thumbnail around an image.
+This adds four pixels of padding and a gray border.
+On hover, an animated glow outlines the image.
+What are bootstrap media objects?
+
+These are abstract object styles for building various types of components (like blog comments, Tweets, etc.) that feature a left-aligned or right-aligned image alongside the textual content. The goal of the media object is to make the code for developing these blocks of information drastically shorter. The goal of media objects (light markup, easy extendability) is achieved by applying classes to some of the simple markup.
+What are bootstrap panels?
+
+Panel components are used when you want to put your DOM component in a box. To get a basic panel, just add class .panel to the <div> element. Also add class .panel default to this element.
+Can you put a table within bootstrap panel?
+
+Yes! To get a non-bordered table within a panel, use the class .table within the panel. Suppose there is a <div> containing .panel-body, we add an extra border to the top of the table for separation. If there is no <div> containing .panel-body, then the component moves from panel header to table without interruption.
+Can you put a listgroup within bootstrap panel?
+
+Yes! You can include list groups within any panel. Create a panel by adding class .panel to the <div> element. Also add class .panel-default to this element. Now within this panel include your list groups.
+What is Scrollspy plugin?
+
+The Scrollspy (auto updating nav) plugin allows you to target sections of the page based on the scroll position. In its basic implementation, as you scroll, you can add  active classes to the navbar based on the scroll position.
+
+
+
+What is affix plugin?
+
+The affix plugin allows a <div> to become affixed to a location on the page. You can also toggle it's pinning on and off using this plugin. A common example of this are social icons. They will start in a location, but as the page hits a certain mark, the <div> will be locked in place and will stop scrolling with the rest of the page.
+Why use Bootstrap?
+
+Bootstrap can be used as −
+•	Mobile first approach − Since Bootstrap 3, the framework consists of Mobile first styles throughout the entire library instead of in separate files.
+•	Browser Support − It is supported by all popular browsers.
+•	Easy to get started − With just the knowledge of HTML and CSS anyone can get started with Bootstrap. Also the Bootstrap official site has a good documentation.
+•	Responsive design − Bootstrap's responsive CSS adjusts to Desktops,Tablets and Mobiles.
+•	Provides a clean and uniform solution for building an interface for developers.
+•	It contains beautiful and functional built-in components which are easy to customize.
+•	It also provides web based customization.
+•	And best of all it is an open source.
+What are Offset columns?
+
+Offsets are a useful feature for more specialized layouts. They can be used to push columns over for more spacing, for example. The .col-xs = * classes don't support offsets, but they are easily replicated by using an empty cell.
+What is Normalize in Bootstrap?
+
+Bootstrap uses Normalize to establish cross browser consistency.
+Normalize.css is a modern, HTML5-ready alternative to CSS resets. It is a small CSS file that provides better cross-browser consistency in the default styling of HTML elements.
+
+
+What are glyphicons?
+
+Glyphicons are icon fonts, which you can use in your web projects. Glyphicons Halflings are not free and require licensing, however their creator has made them available for Bootstrap projects free of cost.
+What is Bootstrap caraousel?
+
+The Bootstrap carousel is a flexible, responsive way to add a slider to your site. In addition to being responsive, the content is flexible enough to allow images, iframes, videos, or just about any type of content that you might want.
+What are input groups?
+
+Input groups are extended Form Controls. Using input groups you can easily prepend and append text or buttons to the text-based inputs.
+By adding prepended and appended content to an input field, you can add common elements to the user's input. For example, you can add the dollar symbol, the @ for a Twitter username, or anything else that might be common for your application interface.
+How will you customize links of pagination?
+
+You can customize links by using .disabled for unclickable links and .active to indicate the current page.
+What are bootstrap alerts?
+
+Bootstrap Alerts provide a way to style messages to the user. They provide contextual feedback messages for typical user actions.
+You can add an optional close icon to alert.
+What are bootstrap panels?
+
+Panel components are used when you want to put your DOM component in a box. To get a basic panel, just add class .panel to the <div> element. Also add class .panel-default to this element.
+What is bootstrap well?
+
+A well is a container in <div> that causes the content to appear sunken or an inset effect on the page. To create a well, simply wrap the content that you would like to appear in the well with a <div> containing the class of .well.
+
+What contextual classes are available to style the panels?
+
+Use contextual state classes such as, panel-primary, panel-success, panel-info, panel-warning, panel-danger, to make a panel more meaningful to a particular context.
+
