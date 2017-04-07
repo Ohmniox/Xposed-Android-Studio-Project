@@ -1,0 +1,396 @@
+Table of Contents
+What is $digest and $apply means?	2
+What are services, factory and providers? What is the difference between services and factory?	2
+What is AngularJS promise?	3
+What are the uses of services?	3
+How to use custom directives?	3
+What will be the basic design approach? (Reusability using factory and service)	4
+Explain MVVM architecture?	4
+Different directives in Angular JS?	4
+Comparison b/w Backbone JS and Angular JS?	5
+Build process followed for backbone apps (Node JS)?	5
+What are Directives in AngularJS?	5
+What security options does angularJS provide?	6
+How big is the angular.js library that needs to be included?	6
+Name the angular module, which is used to enable URL routing?	6
+Which module helps to write unit tests by providing mock modules?	6
+Name some of the most commonly used angular directives, with description?	6
+Is Angularjs dependent on Jquery?	7
+Which directive can you use to pervent the html template being briefly displayed by the browser in its raw form?	7
+What is the difference between ng-view and ng-show?	7
+How to make sequential AJAX requests one after another-using AngularJS?	7
+Name the directive, which is used to attach a controller to the DOM?	8
+How is dependency Injection handled in AngularJS?	8
+How to handle asynchronous calls?	8
+How to pass data to an isolated scoped directive?	8
+Use of bindToController property in directive definition?	8
+Naming rules or diff ways of giving names to directives?	8
+Role and syntax for ng-class?	8
+How to control the order of directives execution on an element?	9
+What is the Role of transclude?	9
+How to access a property in parent scope?	9
+What would be the recommended way to access parent scope properties?	9
+What is digest cycle?	9
+Explain watching scopes by reference, by value and collection?	10
+Explain scope inheritance?	10
+When you need $apply?	10
+Explain different ways of creating services?	10
+What is the Role of services in AngularJS application?	11
+How can we avoid cyclic dependency injection?	11
+How to inject a dependency, which won’t get affected even after JS minification?	11
+What is filter?	11
+How to chain filters?	11
+Naming rules for a filter?	12
+Server communications? Role of interceptors?	12
+How to delay model update?	12
+What is $rootScope and how does it relate to $scope?	12
+What are Filters in AngularJS and explain them?	12
+What is the difference between ng-if and ng-show/ng-hide?	13
+How angular.module works?	13
+AngularJS needs data in which format to populate its model?	13
+Services are singleton objects, which are instantiated only once or many times in the app?	13
+What are the different ways to create a service in angularJS?	13
+What are event listeners available in AngularJS?	13
+What is custom directive, why and where to use it in AngularJS App?	13
+Explain what is Angular Expression?	14
+What is an isolated scope in custom directive?	14
+Give an example where the problem of infinite digest loop can occur?	14
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Interview Questions – Angular JS
+What is $digest and $apply means?
+
+The $digest() function iterates through all the watches in the $scope object, and its child $scope objects (if it has any). When $digest () iterates over the watches, it calls the value function for each watch. If the value returned by the value function is different than the value it returned the last time it was called, the listener function for that watch is called. The $digest() function is called whenever AngularJS thinks it is necessary. For instance, after a button click handler has been executed, or after an AJAX calls returns (after the done () / fail () callback function has been executed).
+
+The $apply () function takes a function as parameter which is executed, and after that $scope.$digest() is called internally. That makes it easier for you to make sure that all watches are checked, and thus all data bindings refreshed. Here is an $apply() example:
+$scope.$apply(function() {
+$scope.data.myVar = "Another value";
+});
+What are services, factory and providers? What is the difference between services and factory?
+
+Services
+Syntax: module.service( 'serviceName', function ); 
+Result: When declaring serviceName as an injectable argument you will be provided with an instance of the function. In other words new FunctionYouPassedToService().
+Factories
+Syntax: module.factory( 'factoryName', function ); 
+Result: When declaring factoryName as an injectable argument you will be provided with the value that is returned by invoking the function reference passed to module.factory.
+Providers
+Syntax: module.provider( 'providerName', function ); 
+Result: When declaring providerName as an injectable argument you will be provided with (new ProviderFunction()).$get(). The constructor function is instantiated before the $get method is called - ProviderFunction is the function reference passed to module.provider.
+What is AngularJS promise?
+
+Promises in AngularJS are provided by the built-in $q service. They provide a way to execute asynchronous functions in series by registering them with a promise object. Promises have made their way into native JavaScript as part of the ES6 specification. The angular $q service provides an interface that closely resembles this new API so porting code to ES6 should be a breeze.
+What are the uses of services?
+
+•	It provides us method to keep data across the lifetime of the angular app
+•	It provides us method to communicate data across the controllers in a consistent way
+•	This is a singleton object and it gets instantiated only once per application
+•	It is used to organize and share data and functions across the application
+How to use custom directives?
+
+Custom directives are used in AngularJS to extend the functionality of HTML. Custom directives are defined using "directive" function. A custom directive simply replaces the element for which it is activated. AngularJS application during bootstrap finds the matching elements and do one time activity using its compile () method of the custom directive then process the element using link() method of the custom directive based on the scope of the directive. AngularJS provides support to create custom directives for following type of elements.
+Element directives − Directive activates when a matching element is encountered.
+Attribute − Directive activates when a matching attribute is encountered.
+CSS − Directive activates when a matching css style is encountered.
+Comment − Directive activates when a matching comment is encountered.
+
+What will be the basic design approach? (Reusability using factory and service)
+
+We can create a reusable module like:
+angular.module('mySharedData').provider('myProvider', function () {
+return {
+		$get: ['$http', function($http) {
+return {
+someFunction: function()
+ {
+return 'some result';
+}
+}
+}]
+}
+});
+To use it, make sure to load the file that defines mySharedData, then do:
+var app = angular.module('myApp', ['mySharedData'])
+	app.controller('myController', function ( $scope, myProvider ) {...});
+Explain MVVM architecture?
+
+MVVM is a variation of Martin Fowler's Presentation Model design pattern. Like Fowler's Presentation Model, MVVM abstracts a view's state and behavior. However, whereas the Presentation Model abstracts a view (i.e., creates a view model) in a manner not dependent on a specific user-interface platform, MVVM was developed by Microsoft architects Ken Cooper and Ted Peters specifically to simplify event-driven programming of user interfaces—by exploiting features of Windows Presentation Foundation (WPF) (Microsoft's .NET graphics system) and Silverlight (WPF's Internet application derivative).
+Different directives in Angular JS? 
+
+•	AngularJS lets you extend HTML with new attributes called Directives.
+•	AngularJS has a set of built-in directives, which offers functionality to your applications.
+•	AngularJS also lets you define your own directives.
+•	AngularJS directives are extended HTML attributes with the prefix ng-.
+a.	The ng-app directive initializes an AngularJS application.
+b.	The ng-init directive initializes application data.
+c.	The ng-model directive binds the value of HTML controls (input, select, textarea) to application data.
+Comparison b/w Backbone JS and Angular JS?
+
+AngularJS is a client-side Javascript framework that allows you to organize large, client-heavy applications into something manageable.
+It has nifty features such as two way data binding and is really versatile, it can be used for large, one-page app projects or for a small little element. If you want a framework that makes your HTML more declarative and gives you neat features like directives, then AngularJS is a great choice.
+
+Backbone.js is a minimalistic JavaScript framework that gives structure to web applications by pulling your “truth” — your model — out of your DOM and into Backbone’s Model, Collection, and View objects. Backbone is relatively easy to implement on a small portion of a page, and at only 6KB for the entire production version library, a little code can mean a lot of organization for your application. With far fewer concepts to grasp than Angular or Ember, Backbone is easier to get started with and allows for greater control over the method of implementation.
+Build process followed for backbone apps (Node JS)?
+
+Node.js is a platform built on Chrome's JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed devices.
+What are Directives in AngularJS?
+
+Directives are markers on a DOM element (such as an attribute, element name, comment or CSS class) that tell AngularJS's HTML compiler to attach a specified behavior to that DOM element.
+
+Angular comes with a set of these directives built-in, like ng-Bind, ng-Model, and ng-Class. Much like you create controllers and services, you can create your own directives for Angular to use.
+
+ What security options does angularJS provide?
+
+Angular does provide built-in protection from basic security holes including cross-site scripting and HTML injection attacks. AngularJS does round-trip escaping on all strings for you and even offers XSRF protection for server-side communication. AngularJS is also designed to be compatible with other security measures like Content Security Policy (CSP), HTTPS (SSL/TLS) and server-side authentication and authorization that greatly reduce the possible attack vectors.
+How big is the angular.js library that needs to be included?
+
+The size of the file is <36KB compressed and minified.
+Name the angular module, which is used to enable URL routing?
+
+ng-route
+Which module helps to write unit tests by providing mock modules?
+
+ng-mock
+ Name some of the most commonly used angular directives, with description?
+
+•	ng-app = Declares the root element of an AngularJS application, under which directives can be used to declare bindings and define behavior.
+
+•	ng-bind = Sets the text of a DOM element to the value of an expression. For example, <span ng-bind="name"></span> will display the value of 'name' inside the span element. Any changes to the variable 'name' in the application's scope are reflected instantly in the DOM.
+
+•	ng-model = Similar to ng-bind, but establishes a two-way data binding between the view and the scope.
+
+•	ng-model-options = Allows tuning how model updates are done.
+
+•	ng-class = Allows class attributes to be dynamically loaded.
+
+•	ng-controller = Specifies a JavaScript controller class that evaluates HTML expressions.
+
+•	ng-repeat = Instantiate an element once per item from a collection.
+
+•	ng-show &amp; ng-hide = Conditionally show or hide an element, depending on the value of a boolean expression. Show and hide is achieved by setting the CSS display style.
+
+•	ng-switch = Conditionally instantiate one template from a set of choices, depending on the value of a selection expression.
+
+•	ng-view = The base directive responsible for handling routes that resolve JSON before rendering templates driven by specified controllers.
+
+•	ng-if = Basic if statement directive which allow to show the following element if the conditions are true. When the condition is false, the element is removed from the DOM. When true, a clone of the compiled element is re-inserted
+Is Angularjs dependent on Jquery?
+
+No, but it does embed jqLite.
+Which directive can you use to pervent the html template being briefly displayed by the browser in its raw form?
+
+ng-cloak
+What is the difference between ng-view and ng-show?
+
+ng-view: ng-view renders the template inside the associated element, whereas ng-show shows or hide the associated HTML element based on whether the expression provided to ngShow attribute evaluates to true or false.
+How to make sequential AJAX requests one after another-using AngularJS?
+
+By making use of Promise chaining feature.
+Name the directive, which is used to attach a controller to the DOM?
+
+ng-controller
+
+How is dependency Injection handled in AngularJS?
+
+Tool like bower.json can be used. Add inter dependent js files in pakage.json and use npm install to inject dependencies
+How to handle asynchronous calls?
+
+Use promises.
+ How to pass data to an isolated scoped directive?
+
+In Isolated scope, the directive does not share a scope with the controller; both directive and controller have their own scope. However, data can be passed to the directive scope in three possible ways.
+•	Data can be passed as a string using the @ string literal
+•	Data can be passed as an object using the = string literal
+•	Data can be passed as a function the & string literal
+Use of bindToController property in directive definition?
+
+Use bindToController alongside controllerAs syntax, which treats Controllers as Class-like Objects, instantiating them as constructors and allowing us to namespace them once instantiated, such as the following:
+<div ng-controller="MainCtrl as vm">
+{{ vm.name }}
+</div>
+Naming rules or diff ways of giving names to directives?
+
+Use consistent names for all components following a pattern that describes the component’s feature then (optionally) its type. Recommended pattern is feature.type.js.
+Role and syntax for ng-class?
+
+<ANY
+ng-class="expression">
+...
+</ANY>
+This directive let’s us do awesome things like:
+•	Add/Remove classes based on Angular variables
+•	Add/Remove classes based on evaluated expressions
+•	Bind single or multiple classes based on dynamic data
+How to control the order of directives execution on an element?
+
+No, you can't control directive execution order on different elements - they will execute as each element is parsed. And it also means you have a bad design somewhere if you're depending on your element order.
+To achieve the same results, you can dynamically add and compile directives to the DOM, in the order you want them too.
+What is the Role of transclude?
+
+When DOM is ready, templates included, classes added, rifle scopes mounted and control established it’s time to use the ultimate tool of synergistic directives – the $transcludeFn. It is passed as fifth argument to linking functions of transcluding directives. Once upon a time it was passed into compile function but as compile is called before scope is ready, transclude was quite useless there.
+How to access a property in parent scope?
+
+By default, child scopes prototypically inherit from the parent scope so you already have access to the parent controller's $scope properties in the child. 
+What would be the recommended way to access parent scope properties?
+
+function ChildCtrl($scope) {
+alert($scope.people)
+	}
+What is digest cycle?
+
+A digest cycle is, simply put, code that runs at an interval. This interval may be sometimes simply as fast as possible after the previous one, and sometimes the interval is set.
+They are typically used to aggregate expensive tasks such that they do not have to run multiple times when there is no need to do so. For example, DOM rendering.
+
+
+Explain watching scopes by reference, by value and collection? 
+
+Scope is an object that refers to the application model. It is an execution context for expressions. Scopes are arranged in hierarchical structure, which mimic the DOM structure of the application. Scopes can watch expressions and propagate events.
+Explain scope inheritance?
+
+If you try to bind to a primitive declared on parent scope, then the selected Item in child scope will effectively shadow the property of the same name in the parent scope.
+In this case there are 3 choices
+•	Define objects in the parent for your model, then reference a property of that object in the child: ref.selectedItem
+•	Use $parent.selectedItem (not always possible, but easier than 1. where possible)
+•	Define a function on the parent scope, and call it from the child, passing the primitive value up to the parent (not always possible)
+When you need $apply?
+
+$apply() is used to execute an expression in angular from outside of the angular framework. (For example from browser DOM events, setTimeout, XHR or third party libraries). Because we are calling into the angular framework we need to perform proper scope life cycle of exception handling, executing watches.
+Explain different ways of creating services?
+
+There are 4 different ways to declare a service.
+•	Registering a existing value as a service
+•	Registering a factory function to create the singleton service instance
+•	Registering a constructor function to create the singleton service instance
+•	Registering a service factory which can be configured
+
+
+
+What is the Role of services in AngularJS application?
+
+AngularJS supports the concepts of "Separation of Concerns" using services architecture. Services are javascript functions and are responsible to do a specific tasks only. This makes them an individual entity which is maintainable and testable. Controllers, filters can call them as on requirement basis. Services are normally injected using dependency injection mechanism of AngularJS.
+How can we avoid cyclic dependency injection?
+
+Use an IOC container that supports this scenario. I know that AutoFac and possible others does. When using AutoFac the restriction is that one of the dependencies must have PropertiesAutoWired=true and use a Property for the dependency.
+How to inject a dependency, which won’t get affected even after JS minification?
+
+It is safer to use the second variant but it is also possible to use the first variant safely with ngmin.
+What is filter?
+
+AngularJS provides filters to transform data:
+•	currency Format a number to a currency format.
+•	date Format a date to a specified format.
+•	filter Select a subset of items from an array.
+•	json Format an object to a JSON string.
+•	limitTo Limits an array/string, into a specified number of elements/characters.
+•	lowercase Format a string to lower case.
+•	number Format a number to a string.
+•	orderBy Orders an array by an expression.
+•	uppercase Format a string to upper case.
+How to chain filters?
+
+Your filters do not know anything about the other filters and servlet. FilterChain knows the order of the invocation of filters and driven by the filter elements you defined in the DD.
+
+Naming rules for a filter?
+
+Use PascalCase for controllers and for functions which return a constructor function that's supposed to be newed, e.g. var user = new User(). Controllers in Angular are viewed as scope constructor functions--thus the PascalCase. Controllers should have Controller appended in their name. Use camelCase for everything else.
+Server communications? Role of interceptors?
+
+The real world applications in addition to templating depend on the backend servers for executing the core business logic. Angular provides a rich built in support for communication with the server, it not only provides the low level mechanism which acts as building block to communicate with the servers, but it also provides built-in wrappers for communication with RESTful services.
+How to delay model update?
+
+This is done using ng-model-options directive with 'debounce: milliseconds' option.
+What is $rootScope and how does it relate to $scope?
+
+$rootScope is the parent object of all $scope Angular objects created in a web page.
+What are Filters in AngularJS and explain them?
+
+AngularJS provides filters to transform data.
+•	currency - Format a number to a currency format.
+•	date- Format a date to a specified format.
+•	filter - Select a subset of items from an array.
+•	json - Format an object to a JSON string.
+•	limitTo - Limits an array/string, into a specified number of elements/characters.
+•	lowercase - Format a string to lower case.
+•	number - Format a number to a string.
+•	orderBy - Orders an array by an expression.
+•	uppercase - Format a string to upper case.
+
+What is the difference between ng-if and ng-show/ng-hide?
+
+The ng-If directive removes or recreates a portion of the DOM tree based on an expression. The ng-Show directive shows or hides the given HTML element based on the expression provided to the ng-Show attribute. 
+How angular.module works?
+
+angular.module is used to create AngularJS modules along with its dependent modules. It is primarily used to create application module.
+AngularJS needs data in which format to populate its model?
+
+AngularJS needs data in JSON format to populate its model.
+Services are singleton objects, which are instantiated only once or many times in the app?
+
+Services are singleton objects which are instantiated only once in app.
+What are the different ways to create a service in angularJS?
+
+There are two ways to create a service.
+•	Factory
+•	Service
+What are event listeners available in AngularJS?
+
+ng-blur, ng-change, ng-click, ng-copy, ng-cut, ng-dblclick, ng-focus, ng-keydown, ng-keypress, ng-keyup, ng-mousedown, ng-mouseenter, ng-mouseleave, ng-mousemove, ng-mouseover, ng-mouseup and ng-paste.
+What is custom directive, why and where to use it in AngularJS App?
+
+Custom directives are used in AngularJS to extend the functionality of HTML. Custom directives are defined using "directive" function. A custom directive simply replaces the element for which it is activated. A custom directive can be acted as a reusable component in the entire App. For Example: Custom Error Validation, Table Directive, and Modal.
+
+
+
+Explain what is Angular Expression?
+
+AngularJS expressions can be written inside double braces: {{expression}}. AngularJS expressions are much like JavaScript expressions: They can contain literals, operators, and variables.
+For Example: {10 + 20}} or {{firstName + " " + lastName}}
+What is an isolated scope in custom directive?
+
+By adding an isolated scope object to your AngularJS directive you can insure that each element using that directive has its own scope. This prevents it from affecting sibling directives and encapsulates the directive.
+Give an example where the problem of infinite digest loop can occur?
+
+This error occurs when the application's model becomes unstable and each $digest cycle triggers a state change and subsequent $digest cycle. Angular detects this situation and prevents an infinite loop from causing the browser to become unresponsive.
+For example, the situation can occur by setting up a watch on a path and subsequently updating the same path when the value changes.
+$scope.$watch('foo', function() {
+$scope.foo = $scope.foo + 1;
+});
+
