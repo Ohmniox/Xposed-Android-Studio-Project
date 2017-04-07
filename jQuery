@@ -1,0 +1,516 @@
+Table of Contents
+What is debounce and throttle in JQuery?	3
+What is CSS selector in jquery?	3
+How to make a datepicker using jquery?	3
+How to do templating using handlebars in jquery?	3
+How to convert JSON to array in jquery?	4
+Navigating through "tabs" using jquery?	4
+How to make a plugin using jquery?	4
+What are the different ways to register events (hands on with this)	4
+What is event bubbling?	5
+Explain 'this' keyword?	5
+Describe Deferred?	5
+Explain trigger in Jquery?	6
+What are jQuery UI components?	6
+How to track the state of jQuery UI widgets?	6
+What is the use of various jQuery UI component 'options'?	6
+What is jQuery UI Widget Factory?	6
+What is the naming convention for jQuery UI component events?	6
+What is the use of jQuery UI 'widget' method?	7
+Give a brief overview of a jQuery UI widget life-cycle?	7
+Which event is present with all jQuery UI widgets?	7
+What is the return type of methods invoked through jQuery UI plugin?	7
+Name some popupar jQuery UI widgets?	7
+How do you select element by ID in jQuery?	7
+What does $("div") will select?	7
+How to select element having a particular class (".selected")?	8
+Is it possible to get value of multiple CSS properties in single statement?	8
+Which is fast document.getElementByID(‘txtName’) or $(‘#txtName’)?	8
+What are selectors in jQuery and how many types of selectors are there?	8
+What does $("div.parent") will select?	8
+Difference between $(this) and 'this' in jQuery?	9
+How jQuery selectors are executed?	9
+What is the difference between $('div') and $('<div/>') in jQuery?	9
+What are the two options for doing animations in HTML5?	9
+Which is better way of doing animation in HTML5, CSS or jQuery and why?	9
+How can we create custom animations using jQuery?	10
+How can we manipulate the opacity property of an element?	10
+Using which  jQuery function we can toggle fading of an element?	10
+What is an event in jquery?	10
+What is an event handler?	10
+How to add css properties to a selector on click of button?	10
+How can we prevent default action of event object?	11
+What are the different events associated with forms?	11
+What is a event handler attachement? Give some examples?	11
+What is event object?	11
+Give some properties of event object?	11
+What does pageX property return?	12
+Which event is fired when the size of the browser window changes?	12
+How is .resize() event used to detect the change in browser window size?	12
+How can we detect scrolling of a content on a page?	12
+Which event specify the handler execution when DOM is completely loaded?	12
+When is handler passed to .ready() event executed?	12
+Which mouse event is used to bind two or more event handlers to matched elements?	12
+How can we alternate the styling table cells?	13
+Specify any 4 mouse events?	13
+Which event is used to unload the javascript elements?	13
+When does unload event gets fired?	13
+Which event is fired to browser when registers keyboard input?	13
+What is the theming framework used in jQuery Mobile?	13
+Explain default jQuery mobile theme?	13
+Can we customize jQuery Mobile theme?	14
+What is jQuery UI CSS Framework?	14
+In which two categories are the jQuery UI CSS framework classes divided?	14
+What is jQuery UI?	14
+What are the Advantages of using the UI framework from jQuery Mobile?	14
+What does ui-bar-(a-z)class do?	14
+What does ui-corner-all class do?	15
+What does ui-disabled class do?	15
+What does ui-shadow class do?	15
+What does .ui-corner-tl: class do?	15
+How do we define a icon type?	15
+What is the difference between detach() and remove() methods?	15
+How do you invoke an click event on an element in DOM?	15
+What does .on() method imply? Is there a difference between .on() and .bind()	16
+Why setTimeout is used often in event handlers?	16
+How do you find whether cookies are enabled in the browser?	16
+How to find the end user platform from the browser properties?	16
+When do you prefer client-side validation or In what cases it is advised to do client side validations?	16
+How to create a namespace in jQuery? What are the advantages and disadvantages of the same	16
+
+
+
+
+
+
+
+Interview Questions – JQuery
+
+What is debounce and throttle in JQuery?
+
+jQuery throttle / debounce allows you to rate-limit your functions in multiple useful ways. Passing a delay and callback to $.throttle returns a new function that will execute no more than once every delay milliseconds. Passing a delay and callback to $.debounce returns a new function that will execute only once, coalescing multiple sequential calls into a single execution at either the very beginning or end.
+
+What is CSS selector in jquery?
+
+A jQuery Selector is a function, which makes use of expressions to find out matching elements from a DOM based on the given criteria. Simply you can say, selectors are used to select one or more HTML elements using jQuery. Once an element is selected then we can perform various operations on that selected element.
+
+How to make a datepicker using jquery?
+
+$(function(){
+$( "#datepicker" ).datepicker();
+//Pass the user selected date format
+$( "#format" ).change(function() {
+$( "#datepicker" ).datepicker( "option", "dateFormat", $(this).val() );
+});
+});
+How to do templating using handlebars in jquery?
+
+Handlebars.js is an extension of the Mustache JavaScript templating language; it supersedes Mustache.js.
+The reasons you should use Handlerbars.js follow:
+•	Handlebars is one of the most advanced (pre-compiling and the like), feature-rich, and popular of all the JavaScript templating engines, and it has the most active community.
+•	Handlebars is a logic-less templating engine, which means there is little to no logic in your templates that are on the HTML page. The most important use of Handlebars, and any templating engine, is to keep your HTML pages simple and clean and decoupled from the logic-based JavaScript files, and Handlebars serves this purpose well. Indeed, Dust.js is also a logic-less templating engine and a worthy alternative to Handlebars.js.
+Moreover, the cutting-edge JavaScript frameworks Meteor.js and Derby.js, which we will cover in upcoming posts, are expected to become mainstream in the coming months, and both use Handlebars.js. To be clear: Meteor.js uses Handlebars.js and Derby.js “template syntax is largely based on Handlebars” template syntax. And Ember.js uses Handlebars, too. While Backbone.js is packaged with Underscore.js templating engine, it is super easy to use Handlebars.js with Backbone.js.  
+
+How to convert JSON to array in jquery?
+
+It's actually very straight forward with jQuery's $.map
+var arr = $.map(obj, function(el) { return el });
+and almost as easy without jQuery, converting the keys to an array and then mapping back the values with Array.map
+var arr = Object.keys(obj).map(function(k) { return obj[k] });
+
+Navigating through "tabs" using jquery?
+
+var anchor = window.location.hash;//returns url hash only like: '#tab4'
+
+if ( anchor.length > 1 ) {
+$("#tabContaier ul li a").removeClass("active"); 
+$('a[href="' + anchor + '"]').addClass('active');
+$(anchor).fadeIn();
+}
+
+How to make a plugin using jquery?
+
+A jQuery plugin is simply a new method that we use to extend jQuery's prototype object. By extending the prototype object you enable all jQuery objects to inherit any methods that you add. As established, whenever you call jQuery() you're creating a new jQuery object, with all of jQuery's methods inherited.
+The idea of a plugin is to do something with a collection of elements. You could consider each method that comes with the jQuery core a plugin, like .fadeOut() or .addClass().
+
+What are the different ways to register events (hands on with this)
+
+From Netscape 3/Explorer 4 onwards, JavaScript recognizes a property for each sort of event that can take place on an element. Therefore most HTML elements have the properties onclick, onmouseover, onkeypress etc. Which HTML elements have which properties — which HTML elements support which events — depends on the browser.
+In themselves, these properties were not a radical novelty. They already existed in the oldest JavaScript browsers:
+<a href="somewhere.html" onclick="doSomething()">
+Here the A tag has a onclick attribute, which in JavaScript becomes a property of the A element. In the oldest browser the event handler is only accessible through HTML attributes in the source code of the page. So if you want this event handler on every link in your page you have to hard–code the function into every single A tag.
+With the advent of the traditional event registration model, the onclick, onmouseover and all other event properties of the HTML element are completely accessible through JavaScript. Now you can add, change and remove event handlers without writing the slightest bit of HTML. After you have properly accessed the HTML element through a DOM you can write your function into the property of your choice, like:
+element.onclick = doSomething;
+Now our example function doSomething() is registered to the onclick property of element and is therefore executed whenever the user clicks on the element. Note that the event name must be all lower case.
+What is event bubbling?
+
+Event bubbling and capturing are two ways of event propagation in the HTML DOM API, when an event occurs in an element inside another element, and both elements have registered a handle for that event. The event propagation mode determines in which order the elements receive the event.
+With bubbling, the event is first captured and handled by the innermost element and then propagated to outer elements.
+With capturing, the event is first captured by the outermost element and propagated to the inner elements.
+
+Explain 'this' keyword?
+
+There are really two main contexts of 'this' in jQuery. The first refers to a to a DOM element, and the second to a jQuery object.
+•	'this' is a DOM element when you are inside of a callback function
+•	'this' is a jQuery object when you are inside your own jQuery functions.
+
+Describe Deferred?
+
+The Deferred object, introduced in jQuery 1.5, is a chainable utility object created by calling the jQuery.Deferred() method. It can register multiple callbacks into callback queues, invoke callback queues, and relay the success or failure state of any synchronous or asynchronous function.
+
+The Deferred object is chainable, similar to the way a jQuery object is chainable, but it has its own methods. After creating a Deferred object, you can use any of the methods below by either chaining directly from the object creation or saving the object in a variable and invoking one or more methods on that variable.
+
+Explain trigger in Jquery?
+
+The trigger() method triggers the specified event and the default behavior of an event (like form submission) for the selected elements.
+Syntax: $(selector).trigger(event,eventObj,param1,param2,...)
+
+What are jQuery UI components?
+
+jQuery UI is a curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery JavaScript Library. It can be used for building highly interactive web applications.
+
+How to track the state of jQuery UI widgets?
+
+All widgets have events associated with their various behaviors to notify you when the state is changing. In order to track the state of the widget, we must introduce a full life cycle for the widget.
+
+What is the use of various jQuery UI component 'options'?
+
+Options are a set of properties passed into a jQuery UI widget as an argument. Each plugin in jQuery UI has a default configuration, which is catered to the most basic and common use case. But if we want a plugin to behave different from its default configuration, we can override each of its default settings using "options". Eg: The slider widget has an option for orientation.
+
+What is jQuery UI Widget Factory?
+
+The jQuery UI Widget Factory is an extensible base on which all of jQuery UI's widgets are built. Using the widget factory to build a plugin provides conveniences for state management, as well as conventions for common tasks like exposing plugin methods and changing options after instantiation.
+
+What is the naming convention for jQuery UI component events?
+
+For most widgets, when the events are triggered, the names are prefixed with the widget name. 
+
+What is the use of jQuery UI 'widget' method?
+
+Some widgets generate wrapper elements, or elements disconnected from the original element. In these cases, the widget method will return the generated element. In cases where there is no generated wrapper, the widget method returns the original element.
+
+Give a brief overview of a jQuery UI widget life-cycle?
+
+The life cycle starts when the widget is initalized by calling the plugin on one or more elements. 'enable' and 'disable' methods are used to enable/disable the widget while 'destroy is used to destroy it and return back to the original markup. This ends the life cycle of the widget.
+
+Which event is present with all jQuery UI widgets?
+
+While most events will be widget specific, all widgets have a "create" event. This event will be triggered immediately after the widget is created.
+
+What is the return type of methods invoked through jQuery UI plugin?
+
+Most methods will return a jQuery object so the method call can be chained with additional jQuery methods. This is even true of methods that return undefined when invoked on the instance. The exceptions to this are methods that return information about the widget.
+
+Name some popupar jQuery UI widgets?
+
+Accordion, Autocomplete, Button, Datepicker, Dialog, Menu, Progressbar, Slider, Spinner, Tabs, Tooltip
+
+How do you select element by ID in jQuery?
+
+To select element use ID selector. We need to prefix the id with "#" (hash symbol). For example, to select element with ID "txtName", then syntax would be, $('#txtName')
+
+What does $("div") will select?
+
+This will select all the div elements on page.
+
+
+How to select element having a particular class (".selected")?
+
+$('.selected'). This selector is known as class selector. We need to prefix the class name with "." (dot).
+
+Is it possible to get value of multiple CSS properties in single statement?
+
+Well, before jQuery 1.9 release it was not possible but one of the new feature of jQuery 1.9 was .css() multi-property getter.
+var propCollection = $("#dvBox").css([ "width", "height", "backgroundColor" ]);
+In this case, the propCollection will be an array and it will look something like this.
+  Collapse | Copy Code
+{ 
+  width: "100px", 
+  height: "200px", 
+  backgroundColor: "#FF00FF" 
+}
+
+Which is fast document.getElementByID(‘txtName’) or $(‘#txtName’)?
+
+Native JavaScipt is always fast. jQuery method to select txtName “$(‘#txtName’)” will internally makes a call to document.getElementByID.
+
+What are selectors in jQuery and how many types of selectors are there?
+
+To work with an element on the web page, first we need to find them. To find the html element in jQuery we use selectors. There are many types of selectors but basic selectors are:
+• Name: Selects all elements which match with the given element Name.
+• #ID: Selects a single element which matches with the given ID
+• .Class: Selects all elements which match with the given Class.
+• Universal (*): Selects all elements available in a DOM.
+• Multiple Elements E, F, G: Selects the combined results of all the specified selectors E, F or G.
+• Attribute Selector: Select elements based on its attribute value
+
+What does $("div.parent") will select?
+
+All the div element with parent class.
+
+Difference between $(this) and 'this' in jQuery?
+
+‘this’ and $(this) refers to the same element. The only difference is the way they are used. 'this' is used in traditional sense, when 'this' is wrapped in $() then it becomes a jQuery object and you are able to use the power of jQuery.
+ $(document).ready(function(){
+    $('#spnValue').mouseover(function(){
+       alert($(this).text());
+  });
+});
+
+
+How jQuery selectors are executed?
+
+Your last selectors is always executed first. For example, in below jQuery code, jQuery will first find all the elements with class ".myCssClass" and after that it will reject all the other elements which are not in "p#elmID".
+  $("p#elmID .myCssClass");
+
+What is the difference between $('div') and $('<div/>') in jQuery?
+
+$('<div/>') : This creates a new div element. However this is not added to DOM tree unless you
+ don't append it to any DOM element.
+
+$('div') : This selects all the div element present on the page.
+
+What are the two options for doing animations in HTML5?
+
+•	Using jQuery 
+•	Using CSS3 
+
+Which is better way of doing animation in HTML5, CSS or jQuery and why?
+
+CSS3 is better, faster way of doing animation in HTML5, because:
+1) Size: The code is smaller in comparison and we can work it straight into your standard stylesheets. We don’t have to include extra JS documents to perform various tasks, which reduce number of HTTP requests and page loading time will be quicker.
+2) IMPLEMENTATION: CSS3 can be written straight into your standard stylesheet and there is no need for extra files. 
+3) ACCESSIBILITY:  CSS3 will be part of the W3C Web Standards then it will be completely accessible, no matter what technology you are using to browse the Internet.  Fully-able users can quite easily turn JavaScript off in their browser or be forced to have it disabled by their employer or organisation’s IT department, thus disabling any JQuery page elements they come across. Even those devices that do fully support it like the iPad suffer from lagging due to slower processing speeds, which is less than ideal.
+
+How can we create custom animations using jQuery?
+
+The jQuery animate () method helps us create custom animations.
+
+How can we manipulate the opacity property of an element?
+
+$("button").click(function(){
+  $("div").animate({
+  opacity:'0.5',  });
+});
+
+Using which  jQuery function we can toggle fading of an element?
+
+The jQuery fadeToggle() method toggles between the fadeIn() and fadeOut() methods.
+
+What is an event in jquery?
+
+Events are the methods used to register behaviors to take effect when the user interacts with the browser, and to further manipulate those registered behaviors.
+
+Example: 
+A mouse click
+A web page loading
+Taking mouse over an element
+Submitting an HTML form
+A keystroke on your keyboard
+
+What is an event handler?
+
+When events are triggered we can then use a custom function to do whatever we want to do with the event. These custom functions call Event Handlers.
+
+How to add css properties to a selector on click of button?
+
+$( 'input' ).on( 'click', function( event ) {
+  
+  $( this ).css( 'background', red );
+})
+
+How can we prevent default action of event object?
+
+We can prevent the default behaviour of an event using .preventDefault() method.
+
+$( 'a' ).on( 'click', function( event ) {
+  // Prevent the default action.
+  event.preventDefault();
+
+});
+
+What are the different events associated with forms?
+
+1) .submit():The submit event is sent to an element when the user is attempting to submit a form.
+
+2) .select():The select event is sent to an element when the user makes a text selection inside it
+
+3).focus():The focus event is sent to an element when it gains focus.
+
+4) .change():The change event is sent to an element when its value changes.
+
+What is a event handler attachement? Give some examples?
+
+They are the method used for attaching an event handler directly to elements.
+Examples: .bind(), .trigger(), .on()
+
+What is event object?
+
+Every event handling function receives an event object, which contains many properties and methods. The event object is most commonly used to prevent the default action of the event via the .preventDefault() method. 
+
+Give some properties of event object?
+
+The properties of event object are as follows:
+
+1) pageX, pageY
+   The mouse position at the time the event occurred, relative to the top        left corner of the page display area (not the entire browser window).
+2) Type
+    The type of the event (e.g. "click").
+3) Which
+    The button or key that was pressed.
+4) Data
+    Any data that was passed in when the event was bound
+
+What does pageX property return?
+
+The mouse position relative to the left edge of the document.
+
+Which event is fired when the size of the browser window changes?
+
+resize() event
+
+How is .resize() event used to detect the change in browser window size?
+
+$( window ).resize(function() {
+  $( "body" ).prepend( "<div>" + $( window ).width() + "</div>" );
+});
+
+How can we detect scrolling of a content on a page?
+
+Using .scroll() event
+
+Which event specify the handler execution when DOM is completely loaded?
+
+.ready()
+
+When is handler passed to .ready() event executed?
+
+The handler passed to .ready() is guaranteed to be executed after the DOM is ready, so this is usually the best place to attach all other event handlers and run other jQuery code.
+
+Which mouse event is used to bind two or more event handlers to matched elements?
+
+.toggle()
+
+
+How can we alternate the styling table cells?
+
+$( "td" ).toggle(
+  function() {
+    $( this ).addClass( "style1" );
+  }, function() {
+    $( this ).addClass( "style2" );
+  }
+);
+
+Specify any 4 mouse events?
+
+.click()/.dblclick()/.hover()/.mousedown()/.mouseenter()/.mouseleave()/.mousemove()/
+.mouseover()/.mouseup()
+
+Which event is used to unload the javascript elements?
+
+.unload()
+
+When does unload event gets fired?
+
+The unload event is sent to the window element when the user navigates away from the page 
+
+Which event is fired to browser when registers keyboard input?
+
+The keypress() event is sent to an element when the browser registers keyboard input.
+
+What is the theming framework used in jQuery Mobile?
+
+jQuery mobile provides a powerful theming framework that allows  developers to customize color schemes and certain CSS aspects of UI features. Developers can use the jQuery UI Themeroller application to customize the appearances.
+
+Explain default jQuery mobile theme?
+
+The default jQuery theme comes with 5 different color swatches “a”, ”b”, “ c”, “d” and “e” .
+Syntax for defining the color swatches is:
+<div data-role=”header” data-theme=”b”></div>
+
+Can we customize jQuery Mobile theme?
+
+Yes, using jQuery UI Themeroller
+
+What is jQuery UI CSS Framework?
+
+jQuery UI includes a robust CSS Framework designed for building custom jQuery widgets. The framework includes classes that cover a wide array of common user interface needs, and can be manipulated using jQuery UI ThemeRoller.
+
+In which two categories are the jQuery UI CSS framework classes divided?
+
+CSS classes are split between ui.core.css and ui.theme.css, depending on whether styles are fixed and structural, or themeable (colors, fonts, backgrounds, etc.) respectively.
+
+What is jQuery UI?
+
+jQuery UI is a curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery JavaScript Library that can be used to build interactive web applications.
+
+What are the Advantages of using the UI framework from jQuery Mobile?
+
+jQuery Mobile comes from the same community that builds jQuery Core & UI. So ultimately one should expect to have all the UI Components available with the Web Framework on Mobile.
+
+Next is the ability of the framework to bring in Native-like UI Controls, Elements and Transitions to the supported devices. And this comes inherently from the Framework, with huge abstraction to the Developer from any related Javascript and/or CSS
+
+What does ui-bar-(a-z)class do?
+
+Applies the toolbar theme styles for the selected swatch letter. Commonly used in conjunction with ui-bar structural class to add the standard bar padding styles.
+
+
+What does ui-corner-all class do?
+
+Applies the theme's global border-radius for rounded corners and is used for container or grouped items in the framework (inset lists, radiobutton sets). There are additional classes for all the possible combinations of rounded corners, for example: ui-corner-tl (top left only), -top (both top corners),-left (both left corners), etc. A second full set of corner classes is provided for buttons so these can have a different corner radius. These use classes with a similar naming convention, but with "btn-corner" instead of "corner", like this: .ui-btn-corner-all.
+
+
+What does ui-disabled class do?
+
+Applies the disabled look and feel which essentially reduces the opacity of any element with this class to 30%, hides the cursor, and sets pointer-events: none; which prevents any interaction in many modern browsers.
+
+What does ui-shadow class do?
+
+Applies the theme's global drop shadow to any element using CSS box-shadow property.
+
+What does .ui-corner-tl: class do?
+
+Applies corner-radius to top left corner of element.
+
+How do we define a icon type?
+
+.ui-icon-{icon type}-{icon sub description}-{direction}.
+Example: .ui-icon-triangle-1-e
+
+What is the difference between detach() and remove() methods?
+
+Both removes the element however, remove() removes the data and events also
+
+How do you invoke an click event on an element in DOM?
+
+Using trigger() method
+
+What does .on() method imply? Is there a difference between .on() and .bind()
+
+.on() helps in binding an event to the selected element in the DOM. There is no difference between .bind() and .on(). .on() method is avaialble from jquery 1.7 onwards.
+
+Why setTimeout is used often in event handlers?
+
+Handling logic in the event handler itself shall degrade the performance, hence the job is delegate in a separate thread using setTimeout
+
+How do you find whether cookies are enabled in the browser?
+
+using navigator.cookieEnabled method
+
+How to find the end user platform from the browser properties?
+
+using navigator.userAgent method
+
+When do you prefer client-side validation or In what cases it is advised to do client side validations?
+
+Cases, where there is no data involvment for verifying the business rule.  For e.g.: in order to validate whether a user is part of specific group, it is better to do validations at server-side as this involves external data for validation
+
+How to create a namespace in jQuery? What are the advantages and disadvantages of the same
+
+Using the plugin-authoring pattern. 
+E.g.: jQuery.fn.mynamespaceplugin
+Adv: An organization of related methods in jquery.
+Disadv: Name conflicts can appear. The bigger the namespace, the more chunks it has to split for better organizing.
+
+
