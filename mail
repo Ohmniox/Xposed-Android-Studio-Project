@@ -12,10 +12,24 @@ Also pls have idea about below technologies : what the technology is, its purpos
 Typescript
 
 NPM 
+Node.js is an open-source, cross-platform JavaScript runtime environment built on Chrome's V8 JavaScript engine.
+Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. 
+Node.js allows the creation of Web servers and networking tools using JavaScript and a collection of "modules" that handle various core functionality.
+Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+npm, short for Node Package Manager, is two things: first and foremost, it is an online repository for the publishing of open-source Node.js projects; second, it is a command-line utility for interacting with said repository that aids in package installation, version management, and dependency management.
 
-Jasmine 
 
-SPA , Flux architecture
+Jasmine , Mocha, PhantomJS, Nightwatch
+Jasmine is a behavior-driven development framework for testing JavaScript code. It does not depend on any other JavaScript frameworks. It does not require a DOM. And it has a clean, obvious syntax so that you can easily write tests.
+
+
+SPA Angular, EmberJs, Meteor
+A single-page application (SPA) is a web application or web site that fits on a single web page with the goal of providing a user experience similar to that of a desktop application.In an SPA, either all necessary code – HTML, JavaScript, and CSS – is retrieved with a single page load and  appropriate resources are dynamically loaded and added to the page as necessary, usually in response to user actions.
+The page does not reload at any point in the process, nor does control transfer to another page
+
+Flux architecture
+Flux is the application architecture that Facebook uses for building client-side web applications.
+Flux is an architecture that Facebook uses internally when working with React. It is not a framework or a library. 
 
  
 
