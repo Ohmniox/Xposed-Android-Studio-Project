@@ -5,18 +5,35 @@ Miscellaneous Q & A
 3.	Things that we consider while reviewing the code?
 4.	Have you worked on bootstrap, different type of validation?
 5.	What is Functional Programming?
+    FunctionalProgramming is when functions, not objects or procedures, are used as the fundamental building blocks of a program.
 6.	MVVM architecture
+
 7.	What are call back functions?
+A callback function is a function which is:passed as an argument to another function, and,
+is invoked after some kind of event
+
 8.	Scenario of how to implement a project being the language not a criteria?
+
 9.	Have you worked with the local file system in your application development?
+
 10.	Which are the web service methods you are using? Responses?
+    Web service is a method of communication between client and server. Server exposes the data with the help of web services.
+    
 11.	Describe your previous projects.
+
 12.	Most challenging task in those projects.
+
 13.	About crashes and performance in those projects
+
 14.	Some recent developments, trends in web development?
+
 15.	Are you using any build tools (grunt, gulp etc.)?
+
 16.	Open source forums you use?
+
 17.	What are some of the challenges you experienced with cross browser compatibilities?
+
 18.	How does MVC pattern work?
+
 19.	Any other design patterns you would recommend for some typical UI problems?
 
